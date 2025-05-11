@@ -34,14 +34,18 @@
             function buyItem(no) {
                 // ここにコードを書く
                 const item = items.find( function(i) {return i.id === no;});
-                console.log("商品番号: " + item.id + ", 商品名: " + item.name + "を購入します。");
-                if (item.stock > 0) {
+                if(item){
+                    console.log("商品番号: " + item.id + ", 商品名: " + item.name + "を購入します。");
+                    if (item.stock > 0) {
                     item.stock--;
-                } else {
-                    console.log("在庫がありません。");
+                    } else {
+                        console.log("在庫がありません。");
+                    }
+                    showItemList(); // 商品一覧の表示関数呼び出し
+                }else{
+                    console.log("該当する商品がありません。");
                 }
-                showItemList(); // 商品一覧の表示関数呼び出し
-            }
+            
 
             showItemList(); // 商品一覧の表示関数呼び出し
             buyItem(3); // 商品購入の関数呼び出し
